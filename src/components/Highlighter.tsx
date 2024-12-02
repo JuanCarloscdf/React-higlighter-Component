@@ -11,11 +11,15 @@ const code = `const [counter, setCounter] = useState(0);
 `
 
 const Highlighter = () => {
+    function copyToClipboard() {
+        navigator.clipboard.writeText(code)
+    }
     return (
         <div className='text-start flex flex-col gap-4 w-full'>
             <h2 className='font-extrabold text-2xl'>highlighter Component</h2>
             <div className=' border border-solid border-white p-4 rounded-xl'>
                 <Suspense>
+                    <button onClick={copyToClipboard}>copy</button>
                     <SyntaxHighlighter
                         language="typescript"
                         style={theme}
